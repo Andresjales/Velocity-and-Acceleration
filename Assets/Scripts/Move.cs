@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     [SerializeField] Vector3 velocity;
     [SerializeField] float xBorder, yBorder;
     [SerializeField] Vector3 acceleration;
+    float speedLose = 0.9f;
 
     void Update()
     {
@@ -39,7 +40,7 @@ public class Move : MonoBehaviour
                 transform.position = new Vector3(-xBorder, transform.position.y, 0);
             }
 
-            velocity.x = velocity.x * -1;
+            velocity.x = -velocity.x * speedLose;
         }
         else if(transform.position.y >= yBorder || transform.position.y <= -yBorder)
         {
@@ -52,7 +53,7 @@ public class Move : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, -yBorder, 0);
             }
 
-            velocity.y = velocity.y * -1;
+            velocity.y = -velocity.y * speedLose;
         }
     }
 }
